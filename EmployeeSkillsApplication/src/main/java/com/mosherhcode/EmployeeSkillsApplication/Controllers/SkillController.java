@@ -25,7 +25,7 @@ public class SkillController {
 	public List<Skill> getEmployeeSkills(@PathVariable String employeeId){
 		
 		//TODO: Add X-Total-Count to header
-		return null;
+		return skillDAO.getEmployeeSkills(employeeId);
 	}
 	
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -36,7 +36,7 @@ public class SkillController {
 		//TODO: Invalid ID format, 400
 		//TODO: Employee Not Found, 404
 		//TODO: Invalid skill data sent to server, 422
-		return null;
+		return skillDAO.addSkillToEmployee(employeeId, newSkill);
 	}
 	
 	@RequestMapping(path = "/employees/{employeeId}/skills/{skillId}", method = RequestMethod.GET)
@@ -44,7 +44,7 @@ public class SkillController {
 		
 		//TODO: Invalid ID, 400
 		//TODO: skill or employee not found, 404
-		return null;
+		return skillDAO.getSingleEmployeeSkill(employeeId, skillId);
 	}
 	
 	@RequestMapping(path = "/employees/{employeeId}/skills/{skillId}", method = RequestMethod.PUT )

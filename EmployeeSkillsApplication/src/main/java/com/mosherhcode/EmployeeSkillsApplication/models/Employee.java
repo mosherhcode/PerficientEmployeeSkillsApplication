@@ -1,5 +1,6 @@
 package com.mosherhcode.EmployeeSkillsApplication.models;
 
+import java.util.List;
 
 public class Employee {
 	private String id;
@@ -12,7 +13,7 @@ public class Employee {
 	private String hiredDate;
 	private String role;
 	private String businessUnit;
-	private Skill[] skills;
+	private List<Skill> skills;
 	private Employee assignedTo;
 	
 	/**
@@ -138,13 +139,13 @@ public class Employee {
 	/**
 	 * @return the skills
 	 */
-	public Skill[] getSkills() {
+	public List<Skill> getSkills() {
 		return skills;
 	}
 	/**
 	 * @param skills the skills to set
 	 */
-	public void setSkills(Skill[] skills) {
+	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
 	}
 	/**

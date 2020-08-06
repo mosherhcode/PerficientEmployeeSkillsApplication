@@ -11,9 +11,9 @@ DROP TYPE IF EXISTS business_unit_options;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TYPE role_options AS ENUM ('Technical Consultant', 'Project Manager', 'Director', 'Chief');
+--CREATE TYPE role_options AS ENUM ('Technical Consultant', 'Project Manager', 'Director', 'Chief');
 
-CREATE TYPE business_unit_options AS ENUM ('Digital Experience Group', 'Adobe', 'IBM NBU', 'API Management');
+--CREATE TYPE business_unit_options AS ENUM ('Digital Experience Group', 'Adobe', 'IBM NBU', 'API Management');
 
 CREATE TABLE employee (
         id UUID DEFAULT uuid_generate_v4 (),
@@ -24,8 +24,8 @@ CREATE TABLE employee (
         company_email varchar NOT NULL,
         birth_date varchar NOT NULL,
         hired_date varchar NOT NULL,
-        role role_options NOT NULL,
-        business_unit business_unit_options,
+        role varchar NOT NULL CHECK (role IN ('Technical Consultant', 'Project Manager', 'Director', 'Chief')),
+        business_unit varchar CHECK (business_unit IN ('Digital Experience Group', 'Adobe', 'IBM NBU', 'API Management')),
         assigned_to UUID,
         PRIMARY KEY (id)
 );

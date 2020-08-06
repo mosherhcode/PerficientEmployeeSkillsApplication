@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.mosherhcode.EmployeeSkillsApplication.models.Employee;
 
+
 @Component
 public class EmployeeJdbcDAO implements EmployeeDAO {
 
@@ -49,7 +50,7 @@ public class EmployeeJdbcDAO implements EmployeeDAO {
 		theEmployee.setCompanyEmail(results.getString("company_email"));
 		theEmployee.setBirthDate(results.getString("birth_date"));
 		theEmployee.setHiredDate(results.getString("hired_date"));
-		theEmployee.setRole(results.getString("role"));
+		theEmployee.setRole((results.getString("role")));
 		
 		SkillDAO skillDAO = new SkillJdbcDAO(jdbcTemplate.getDataSource());
 		theEmployee.setSkills(skillDAO.getEmployeeSkills(theEmployee.getId()));

@@ -94,14 +94,37 @@ public class EmployeeJdbcDAO implements EmployeeDAO {
 	}
 
 	@Override
-	public Employee updateEmployee(Employee updatedEmployee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee updateEmployee(String employeeId, Employee updatedEmployee) {
+		
+		AddressDAO addressDAO = new AddressJdbcDAO(jdbcTemplate);
+		addressDAO.updateAddress(updatedEmployee.getAddress());
+		
+		String sqlUpdateEmployee = "UPDATE employee "
+									+ "SET first_name = ?, "
+									+ "last_name = ?, "
+									+ "address_id = ?, "
+									+ "contact_email = ?, "
+									+ "company_email = ?, "
+									+ "birth_date = ?, "
+									+ "hired_date = ?, "
+									+ "role = ?, "
+									+ "business_unit = ? "
+									+ "WHERE id = ?";
+		
+		jdbcTemplate.update(sqlUpdateEmployee, updatedEmployee.getFirstName(), updatedEmployee.getLastName(), UUID.fromString(updatedEmployee.getAddress().getId()), 
+				updatedEmployee.getContactEmail(), updatedEmployee.getCompanyEmail(), updatedEmployee.getBirthDate(), updatedEmployee.getHiredDate(), 
+				updatedEmployee.getRole(), updatedEmployee.getBusinessUnit(), UUID.fromString(employeeId));
+		
+		
+		return getSingleEmployee(employeeId);
 	}
 
 	@Override
 	public void deleteEmployee(String employeeId) {
-		// TODO Auto-generated method stub
+		String sqlDeleteEmployee = "DELETE FROM employee "
+									+ "WHERE id = ?";
+		
+		jdbcTemplate.update(sqlDeleteEmployee, employeeId);
 		
 	}
 

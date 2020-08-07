@@ -13,7 +13,8 @@ public interface EmployeeDAO {
 	
 	public abstract Employee getSingleEmployee(String employeeId);
 	
-	public abstract Employee updateEmployee(Employee updatedEmployee);
+	public abstract Employee updateEmployee(String employeeId, Employee updatedEmployee);
 	
 	public abstract void deleteEmployee(String employeeId);
+	
 }

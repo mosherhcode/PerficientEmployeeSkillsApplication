@@ -55,4 +55,22 @@ public class AddressJdbcDAO implements AddressDAO {
 		
 		return theAddress;
 	}
+
+	@Override
+	public Address updateAddress(Address address) {
+		// TODO Auto-generated method stub
+		String sqlUpdateAddress = "UPDATE address "
+									+ "SET street = ?, "
+									+ "suite = ?, "
+									+ "city = ?,"
+									+ "region = ?,"
+									+ "postal = ?,"
+									+ "country = ?"
+									+ "WHERE id = ?";
+		
+		jdbcTemplate.update(sqlUpdateAddress, address.getStreet(), address.getSuite(), 
+				address.getCity(), address.getRegion(), address.getPostal(), address.getCountry(), UUID.fromString(address.getId()));
+		
+		return getAddress(address.getId());
+	}
 }

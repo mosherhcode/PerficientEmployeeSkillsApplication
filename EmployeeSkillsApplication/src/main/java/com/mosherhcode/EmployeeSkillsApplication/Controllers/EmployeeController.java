@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mosherhcode.EmployeeSkillsApplication.DAOs.EmployeeDAO;
 import com.mosherhcode.EmployeeSkillsApplication.models.Employee;
 
+@CrossOrigin
 @RestController
 public class EmployeeController {
 
@@ -53,7 +55,7 @@ public class EmployeeController {
 		//TODO: On Invalid ID Format, response code 400
 		//TODO: On employee not found, response code 404
 		//TODO: Invalid Perficient Employee Data sent to server, response code 422
-		return null;
+		return employeeDAO.updateEmployee(employeeId, updatedEmployee);
 	}
 	
 	@RequestMapping(path = "/employees/{employeeId}", method = RequestMethod.DELETE)
@@ -61,5 +63,6 @@ public class EmployeeController {
 		//TODO: Deleted a Perficient employee, 204
 		//TODO: Invalid ID Format, 400
 		//TODO: Employee Not Found, 404
+		employeeDAO.deleteEmployee(employeeId);
 	}
 }

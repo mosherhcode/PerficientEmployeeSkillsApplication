@@ -8,4 +8,6 @@ public interface AddressDAO {
 	public abstract Address getAddress(String addressId);
 
 	public abstract Address addNewAddress(Address address);
+	
+	public abstract Address updateAddress(Address address);
 }

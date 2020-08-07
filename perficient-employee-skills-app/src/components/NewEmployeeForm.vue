@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import EmployeeService from '../services/EmployeeService.js';
+
 export default {
     data(){
         return {
@@ -66,6 +68,16 @@ export default {
                 role: "",
                 businessUnit: ""
             }
+        }
+    }, 
+    methods: {
+        saveNewEmployee(){
+            EmployeeService.addEmployee(this.newEmployee).then(response => {
+                if(response.status == 201)
+                    this.$router.push('/');
+                else
+                    alert(response.statusText);
+            })
         }
     }
 }

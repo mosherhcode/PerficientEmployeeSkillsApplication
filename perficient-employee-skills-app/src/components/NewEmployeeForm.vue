@@ -67,6 +67,7 @@ export default {
                 hiredDate: "",
                 role: "",
                 businessUnit: ""
+                //need to fill in the rest of the employee details
             }
         }
     }, 

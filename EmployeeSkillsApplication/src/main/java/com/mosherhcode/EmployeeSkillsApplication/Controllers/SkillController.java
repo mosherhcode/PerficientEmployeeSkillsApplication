@@ -56,6 +56,7 @@ public class SkillController {
 		return null;
 	}
 	
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(path = "/employees/{employeeId}/skills/{skillId}", method = RequestMethod.DELETE)
 	public void deleteEmployeeSkill(@PathVariable String employeeId, @PathVariable String skillId) {
 		//TODO: successfully deleted, 204
